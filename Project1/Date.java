@@ -21,6 +21,18 @@ public class Date {
         day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
     }
 
+    public int getYear(){
+        return year;
+    }
+
+    public int getMonth(){
+        return month;
+    }
+
+    public int getDay(){
+        return day;
+    }
+
     public boolean isValid() {
         Date today = new Date();
 
