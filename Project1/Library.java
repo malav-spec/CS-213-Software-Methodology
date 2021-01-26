@@ -32,9 +32,29 @@ public class Library {
         numBooks++;
     }
 
-    public boolean remove(Book book) {
+    public boolean remove(Book book) {  //removes book by updating values in the array
+        int book_not_available=-1;
         int f = find(book);
+        if(f==book_not_available)       //if book does not exist no changes are made
+        {
+            return false;
+        }
+        if(f==numBooks-1)
+        {
+            numBooks--;
+            return true;
+        }
+        for(int i=f;i<numBooks-1;i++)   // Overwriting the values in the array to remove particular book
+        {
+             books[i].setName(books[i+1].getName());
+             books[i].setNumber(books[i+1].getNumber());
+             books[i].setCheckedOut(books[i+1].getCheckedOut());
+             books[i].setDatePublished(books[i+1].getDatePublished());
+
+        }
+        numBooks--;
         return true;
+
     }
 
     public boolean checkOut(Book book) {
