@@ -67,7 +67,6 @@ public class Kiosk {
                 newBook.setName(name);
                 newBook.setDatePublished(date);
                 newBook.setNumber(Integer.toString(serialNumber));
-                newBook.setCheckedOut(false);
                 lib.add(newBook);
                 serialNumber++; //increase sr. number after adding
                 System.out.println(name + " added to the library.");
@@ -84,7 +83,15 @@ public class Kiosk {
                 }
             }
             else if(command.equals("O")){ //Calls the checkOut function from the lib
-                    lib.checkout(number);
+                Book newBook = new Book();
+                newBook.setNumber(number);
+                if(!lib.checkOut(newBook)){
+                    System.out.println("Book#"+number+" is not available");
+                }
+                else{
+                    System.out.println("You've checked out "+"Book#"+number+". Enjoy!");
+                }
+
             }
             else if(command.equals("I")){ // Calls the returns function from the lib
                 Book newBook = new Book();
@@ -100,7 +107,6 @@ public class Kiosk {
             else if(command.equals("PA")){ //Calls the print function from the lib
                 System.out.println("** List of books in the library");
                 lib.print();
-                lib.print_using_date();
                 System.out.println("** End of list");
             }
 

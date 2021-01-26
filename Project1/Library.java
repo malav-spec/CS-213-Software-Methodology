@@ -75,38 +75,6 @@ public class Library {
             System.out.println("Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear()+"::is available.");
         }
     }
-    public void print_using_date()
-    {
-        Book[] books2 =new Book[numBooks];
-
-       // double d=Double.parseDouble("23");
-        System.out.print("");
-
-    }
-    public void checkout(String book_number)  // Check if book is available to checkout by searching it using its unique number
-    {
-        if(numBooks==0)
-            System.out.println("No books to Checkout");
-
-        for(int i =0 ;i<numBooks;i++)
-        {
-            if(books[i].getNumber().equals((book_number)))
-            {
-                if(books[i].getCheckedOut()) {
-                    System.out.println("Book Not Available");
-                    return;
-                }
-                else {
-                    books[i].setCheckedOut(true);
-                    System.out.println(books[i].getCheckedOut());
-                    return;
-                }
-
-            }
-        }
-        System.out.println("Bok Number does not exist");
-    }
-
 
     private void grow() { // helper method to grow the capacity by 4
 
@@ -127,6 +95,7 @@ public class Library {
                 return i;
             }
         }
+
         return -1; //This means book not found in the lib.
     }
 
