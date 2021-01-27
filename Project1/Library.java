@@ -95,7 +95,60 @@ public class Library {
             System.out.println("Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear()+"::is available.");
         }
     }
+    public void print_PD()
+    {
+        Book[] sorted_list = sorted_Array();   // This function returns sorted array
+        int i;
+        for(i=0;i<numBooks;i++){
+            System.out.println("Book#"+sorted_list[i].getNumber()+"::"+sorted_list[i].getName()+"::"+sorted_list[i].getDatePublished().getMonth()+"/"+sorted_list[i].getDatePublished().getDay()+"/"+sorted_list[i].getDatePublished().getYear()+"::is available.");
+        }
+    }
 
+    private Book[] sorted_Array() //Returns an sorted array
+    {
+        Book[] temp = books;
+        Book[]  swap_var= new Book[1];
+        Book swap_obj = new Book();
+        String date1="";
+        String date2="";
+
+        int min_index;
+        for(int i=0;i<numBooks-1;i++)
+        {
+            min_index=i;
+            for (int j=i+1;j<numBooks;j++ )
+            {
+                date1=""+temp[min_index].getDatePublished().getYear()+temp[ min_index].getDatePublished().getMonth()+temp[ min_index].getDatePublished().getDay();
+                date2=""+temp[j].getDatePublished().getYear()+temp[j].getDatePublished().getMonth()+temp[j].getDatePublished().getDay();
+                int int_date1= Integer.parseInt(date1);
+                int int_date2= Integer.parseInt(date2);
+                if(int_date2<int_date1)
+                {
+                    min_index=j;
+                }
+
+            }
+            swap_obj.setName(temp[min_index].getName());                   //Creating Book Object to store values of the minimum index
+            swap_obj.setDatePublished(temp[min_index].getDatePublished());
+            swap_obj.setNumber(temp[min_index].getNumber());
+            swap_obj.setCheckedOut(temp[min_index].getCheckedOut());
+            swap_var[0]=swap_obj;
+
+            temp[min_index].setName(temp[i].getName());                     //Swap values using temporary array
+            temp[min_index].setNumber(temp[i].getNumber());
+            temp[min_index].setCheckedOut(temp[i].getCheckedOut());
+            temp[min_index].setDatePublished(temp[i].getDatePublished());
+
+            temp[i].setName(swap_var[0].getName());
+            temp[i].setNumber(swap_var[0].getNumber());
+            temp[i].setCheckedOut(swap_var[0].getCheckedOut());
+            temp[i].setDatePublished(swap_var[0].getDatePublished());
+
+
+        }
+
+        return temp;
+    }
     private void grow() { // helper method to grow the capacity by 4
 
         Book[] temp = new Book[books.length + 4]; //Declare and initialize a temp array of length +4 than original one
