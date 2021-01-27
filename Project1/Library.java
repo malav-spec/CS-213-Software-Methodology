@@ -118,8 +118,9 @@ public class Library {
             min_index=i;
             for (int j=i+1;j<numBooks;j++ )
             {
-                date1=""+temp[min_index].getDatePublished().getYear()+temp[ min_index].getDatePublished().getMonth()+temp[ min_index].getDatePublished().getDay();
-                date2=""+temp[j].getDatePublished().getYear()+temp[j].getDatePublished().getMonth()+temp[j].getDatePublished().getDay();
+                date1 = check_Date(min_index,temp);  // Takes the date and turns it into a string value
+                date2 = check_Date(j,temp);
+                //  date2=""+temp[j].getDatePublished().getYear()+temp[j].getDatePublished().getMonth()+temp[j].getDatePublished().getDay();
                 int int_date1= Integer.parseInt(date1);
                 int int_date2= Integer.parseInt(date2);
                 if(int_date2<int_date1)
@@ -148,6 +149,27 @@ public class Library {
         }
 
         return temp;
+    }
+    private String check_Date(int index,Book[] temp)
+    {
+        String date_to_string = ""+temp[index].getDatePublished().getYear();
+        if(temp[index].getDatePublished().getMonth()<10)
+        {
+            date_to_string=date_to_string+"0"+temp[index].getDatePublished().getMonth();
+        }
+        else
+        {
+            date_to_string=date_to_string+temp[index].getDatePublished().getMonth();
+        }
+        if(temp[index].getDatePublished().getDay()<10)
+        {
+            date_to_string=date_to_string+"0"+temp[index].getDatePublished().getDay();
+        }
+        else
+        {
+            date_to_string=date_to_string+temp[index].getDatePublished().getDay();
+        }
+        return date_to_string;
     }
     private void grow() { // helper method to grow the capacity by 4
 
