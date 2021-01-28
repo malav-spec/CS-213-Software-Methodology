@@ -111,7 +111,7 @@ public class Kiosk {
             }
             else if(command.equals("PD")){ //Calls the print function from the lib
                 System.out.println("**List of books by the dates published.");
-                lib.print_PD();
+                lib.printByDate();
                 System.out.println("** End of list");
             }
 
