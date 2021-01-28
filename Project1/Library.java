@@ -105,7 +105,7 @@ public class Library {
             System.out.println(print_stmt);
         }
     }
-    public void print_PD()
+    public void printByDate()
     {
         Book[] sorted_list = sorted_Array();   // This function returns sorted array
         int i;
