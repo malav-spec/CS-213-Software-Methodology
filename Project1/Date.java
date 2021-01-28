@@ -39,6 +39,10 @@ public class Date {
         if(year < 1900 ){// If year < 1900 return false
             return false;
         }
+        if(month<=0||day<=0) //Month and date cannot be zero
+        {
+            return false;
+        }
 
         if(year > today.year){//If year > current year, return false
             return false;
