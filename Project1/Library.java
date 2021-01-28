@@ -91,8 +91,18 @@ public class Library {
 
     public void print() {
         int i;
+        String print_stmt = "";
         for(i=0;i<numBooks;i++){
-            System.out.println("Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear()+"::is available.");
+            print_stmt=print_stmt+"Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear();
+            if(books[i].getCheckedOut())
+            {
+                print_stmt=print_stmt+"::is not available.";
+            }
+            else
+            {
+                print_stmt=print_stmt+"::is available.";
+            }
+            System.out.println(print_stmt);
         }
     }
     public void print_PD()
