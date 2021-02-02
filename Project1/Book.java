@@ -1,47 +1,112 @@
 import java.util.*;
 
+/**
+ * Creates a Book object
+ * @author Malav Doshi and Herik Patel
+ */
 public class Book {
+    /**
+     *5-digit serial number unique to the book
+     */
     private String number; //a 5-digit serial number unique to the book
+    /**
+     * Name of the book
+     */
     private String name;
+    /**
+     * To check availbility
+     */
     private boolean checkedOut;
+    /**
+     * Date published
+     */
     private Date datePublished;
 
+    /** Constructor
+     * @author Malav Doshi and Herik Patel
+     */
     public Book(){
 
     }
 
+    /**
+     * Sets the name of book by assigning the value passed as parameter
+     * @author Malav Doshi and Herik Patel
+     * @param name takes name as parameter
+     */
     public void setName(String name){
         this.name = name;
     }
 
+    /**
+     * Sets the serial number of the book
+     * @author Malav Doshi and Herik Patel
+     * @param number Unique book id
+     */
     public void setNumber(String number){
         this.number = number;
     }
 
+    /**
+     *Sets published date for the book
+     * @author Malav Doshi and Herik Patel
+     * @param  date Date type parameter is passed to assign date for a book
+     */
     public void setDatePublished(Date date){
         this.datePublished = date;
     }
 
+    /**
+     * Used to initialize a value to keep record if the book is checked out
+     * @author Malav Doshi and Herik Patel
+     * @param bool Takes a boolean value as parameter
+     */
     public void setCheckedOut(Boolean bool){
         this.checkedOut = bool;
     }
 
+    /**
+     * Used to get name of book
+     * @author Malav Doshi and Herik Patel
+     * @return String value which is name of the book
+     */
     public String getName(){
         return name;
     }
 
+    /**
+     * Returns a value which is unique book number
+     * @author Malav Doshi and Herik Patel
+     * @return String value which is unique number for a book
+     */
     public String getNumber(){
         return number;
     }
 
+    /**
+     * Used to get published date for a book
+     * @author Malav Doshi and Herik Patel
+     * @return Date object
+     */
     public Date getDatePublished(){
         return datePublished;
     }
 
+    /**
+     * Used to check if a book is available to checkout
+     *@author Malav Doshi and Herik Patel
+     * @return True if book is available to checkout else false
+     */
     public Boolean getCheckedOut(){
         return checkedOut;
     }
 
+    /**
+     *
+     * @param s1 String 1
+     * @param s2 String 2
+     * @return True if two strings are equal else return False
+     */
     public boolean compareString(String s1, String s2){
         int i,j;
 
@@ -56,7 +121,11 @@ public class Book {
         return true;
     }
 
-
+    /**
+     *
+     * @param obj Object
+     * @return False if obj is not instance of book
+     */
     @Override
     public boolean equals(Object obj){
 
@@ -77,6 +146,12 @@ public class Book {
         return false;
     }
 
+    /**
+     * Used to compare two Date
+     * @param d1 Date 1
+     * @param d2 Date 2
+     * @return False if two Date are not equal else return True
+     */
     public boolean comapreDate(Date d1, Date d2) {
         if(d1.getYear() == d2.getYear() && d1.getDay() == d2.getDay() && d1.getMonth() == d2.getMonth()){
             return true;
@@ -84,6 +159,10 @@ public class Book {
         return false;
     }
 
+    /**
+     *
+     * @return String value
+     */
     @Override
     public String toString() {
         return null;

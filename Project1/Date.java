@@ -1,16 +1,27 @@
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
-
+/**
+ * @author Malav Doshi and Herik Patel
+ * Used to create Date object
+ */
 public class Date {
-
+    /**
+     * year of publishing
+     */
     private int year;
+    /**
+     * month of publishing
+     */
     private int month;
+    /**
+     * day of publishing
+     */
     private int day;
 
     /**
-     *
-     * @param date
+     * Used to set values for Date object
+     * @param date It is the date entered for book
      */
 
     public Date(String date) {
@@ -20,6 +31,10 @@ public class Date {
         year = Integer.parseInt(st.nextToken());
     }
 
+    /**
+     *
+     * @author Malav Doshi and Herik Patel
+     */
     public Date() {
         year = Calendar.getInstance().get(Calendar.YEAR);
         month = Calendar.getInstance().get(Calendar.MONTH) + 1;//Since month in Calendar class starts at 0
@@ -27,22 +42,36 @@ public class Date {
     }
 
     /**
-     *
-     * @return
+     * Used to get year for a date
+     * @author Malav Doshi and Herik Patel
+     * @return Integer value which is year
      */
 
     public int getYear(){
         return year;
     }
-
+    /**
+     * Used to get month for a date
+     * @author Malav Doshi and Herik Patel
+     * @return Integer value which is month
+     */
     public int getMonth(){
         return month;
     }
-
+    /**
+     * Used to get day for a date
+     * @author Malav Doshi and Herik Patel
+     * @return Integer value which is day
+     */
     public int getDay(){
         return day;
     }
 
+    /**
+     * Checks if the date entered by user is valid or invalid
+     * @author Malav Doshi and Herik Patel
+     * @return False if invalid date is entered else True
+     */
     public boolean isValid() {
         Date today = new Date();
 
@@ -89,6 +118,12 @@ public class Date {
         return true;
     }
 
+    /**
+     *Used to check if a year is a leap year or not
+     * @author Malav Doshi and Herik Patel
+     * @param y Year
+     * @return True if given year is leap year else false
+     */
     private boolean isLeapYear(int y){
         if(y % 4 == 0){ //Check divisibility by 4
 

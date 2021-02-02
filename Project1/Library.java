@@ -1,24 +1,58 @@
+/**
+ * Creates library object
+ * @author Malav Doshi and Herik Patel
+ */
 public class Library {
+    /**
+     * Array of Book object
+     */
     private Book[] books; // array-based implementation of the bag data structure
+    /**
+     * To store how many books are in library
+     */
     private int numBooks; // the number of books currently in the bag
 
+    /**
+     *Constructor
+     * @author Malav Doshi and Herik Patel
+     */
     public Library() { //default constructor to create an empty bag
         books = new Book[4];
         numBooks = 0;
     }
 
+    /**
+     * Maintains how many books are there in the Library
+     * @author Malav Doshi and Herik Patel
+     * @param num Total books present
+     */
     public void setNumBooks(int num){
         numBooks = num;
     }
 
+    /**
+     * Used to get how many books are there in the Library
+     * @author Malav Doshi and Herik Patel
+     * @return Total book in Library
+     */
     public int getNumBooks(){
         return numBooks;
     }
 
+    /**
+     *Gets Book in Library
+     * @author Malav Doshi and Herik Patel
+     * @return Array of Book
+     */
     public Book[] getBookLib(){
         return books;
     }
 
+    /**
+     * Adds Book object to the Library
+     * @author Malav Doshi and Herik Patel
+     * @param book object from kiosk
+     */
     public void add(Book book) {  //Add the book to the lib.
         if(numBooks == 0){
             books[0] = book;
@@ -32,6 +66,12 @@ public class Library {
         numBooks++;
     }
 
+    /**
+     * Used to remove book from library and maintain the record
+     * @author Malav Doshi and Herik Patel
+     * @param book object from kiosk
+     * @return False if book is not in the library else True
+     */
     public boolean remove(Book book) {  //removes book by updating values in the array
         int book_not_available=-1;
         int f = find(book);
@@ -57,6 +97,12 @@ public class Library {
 
     }
 
+    /**
+     * Used to see if the book is checkout or available
+     * @author Malav Doshi and Herik Patel
+     * @param book object from kiosk
+     * @return False if book is already checkedout
+     */
     public boolean checkOut(Book book) {
 
         int f = find(book);
@@ -74,6 +120,12 @@ public class Library {
 
     }
 
+    /**
+     * When user returns the book it updates the record
+     * @author Malav Doshi and Herik Patel
+     * @param book object from kiosk
+     * @return True if book is successfully returned or False
+     */
     public boolean returns(Book book) {
         int f = find(book);
 
@@ -89,6 +141,10 @@ public class Library {
         return true;
     }
 
+    /**
+     * Used to print book in the Library
+     * @author Malav Doshi and Herik Patel
+     */
     public void print() {
         int i;
         String print_stmt = "";
@@ -102,9 +158,16 @@ public class Library {
             {
                 print_stmt=print_stmt+"::is available.";
             }
+
             System.out.println(print_stmt);
+            print_stmt = "";
         }
     }
+
+    /**
+     * Used to print books in ascending order by dates
+     * @author Malav Doshi and Herik Patel
+     */
     public void printByDate()
     {
         Book[] sorted_list = sorted_Array();   // This function returns sorted array
@@ -114,6 +177,10 @@ public class Library {
         }
     }
 
+    /**
+     * Used to print books in ascending order by book number
+     * @author Malav Doshi and Herik Patel
+     */
     public void printByNumber() {
 
         int i,j;
@@ -140,6 +207,11 @@ public class Library {
         }
     }
 
+    /**
+     * Used to sort the Book array by date
+     * @author Malav Doshi and Herik Patel
+     * @return Book array which is sorted by dates
+     */
     private Book[] sorted_Array() //Returns an sorted array
     {
         Book[] temp = books;
@@ -186,6 +258,14 @@ public class Library {
 
         return temp;
     }
+
+    /**
+     * Used to check date and return it as a String value
+     * @author Malav Doshi and Herik Patel
+     * @param index Index of the array
+     * @param temp Temporary Book array
+     * @return String value of date
+     */
     private String check_Date(int index,Book[] temp)
     {
         String date_to_string = ""+temp[index].getDatePublished().getYear();
@@ -207,6 +287,12 @@ public class Library {
         }
         return date_to_string;
     }
+
+    /**
+     * Increases size of the Book array by 4
+     * @author Malav Doshi and Herik Patel
+     * @author Malav Doshi and Herik Patel
+     */
     private void grow() { // helper method to grow the capacity by 4
 
         Book[] temp = new Book[books.length + 4]; //Declare and initialize a temp array of length +4 than original one
@@ -219,6 +305,12 @@ public class Library {
         books = temp; //Give the reference of the new array to the original array
     }
 
+    /**
+     * Used to find if book is in the record
+     * @author Malav Doshi and Herik Patel
+     * @param book object from kiosk
+     * @return Integer value if book is found returns the index of book
+     */
     private int find(Book book) { // helper method to find a book in the bag. Returns the index of the book to be removed
         int i;
         for(i=0;i<numBooks;i++){
@@ -230,141 +322,13 @@ public class Library {
         return -1; //This means book not found in the lib.
     }
 
+    /**
+     * Used to see if book is available
+     * @author Malav Doshi and Herik Patel
+     * @return False
+     */
     public boolean isBookAvailable(){
         return false;
     }
 }
 
-//public class Library {
-//    private Book[] books; // array-based implementation of the bag data structure
-//    private int numBooks; // the number of books currently in the bag
-//
-//    public Library() { //default constructor to create an empty bag
-//        books = new Book[4];
-//        numBooks = 0;
-//    }
-//
-//    public void setNumBooks(int num){
-//        numBooks = num;
-//    }
-//
-//    public int getNumBooks(){
-//        return numBooks;
-//    }
-//
-//    public Book[] getBookLib(){
-//        return books;
-//    }
-//
-//    public void add(Book book) {  //Add the book to the lib.
-//        if(numBooks == 0){
-//            books[0] = book;
-//            numBooks++;
-//            return;
-//        }
-//        if(numBooks == books.length){ //If the bag is full call grow() to increase the capacity
-//            grow();
-//        }
-//        books[numBooks] = book;
-//        numBooks++;
-//    }
-//
-//    public boolean remove(Book book) {  //removes book by updating values in the array
-//
-//        int book_not_available=-1;
-//        int f = find(book);
-//
-//        if(f==book_not_available)       //if book does not exist no changes are made
-//        {
-//            return false;
-//        }
-//
-//        if(f==numBooks-1)
-//        {
-//            numBooks--;
-//            return true;
-//        }
-//
-//        for(int i=f;i<numBooks-1;i++)   // Overwriting the values in the array to remove particular book
-//        {
-//            books[i].setName(books[i+1].getName());
-//            books[i].setNumber(books[i+1].getNumber());
-//            books[i].setCheckedOut(books[i+1].getCheckedOut());
-//            books[i].setDatePublished(books[i+1].getDatePublished());
-//
-//        }
-//
-//        numBooks--;
-//        return true;
-//
-//    }
-//
-//
-//    public boolean checkOut(Book book) {
-//
-//        int f = find(book);
-//
-//        if(f == -1){
-//            return false;
-//        }
-//
-//        if(books[f].getCheckedOut()){
-//            return false;
-//        }
-//
-//        books[f].setCheckedOut(true);
-//        return true;
-//
-//    }
-//
-//    public boolean returns(Book book) {
-//        int f = find(book);
-//
-//        if(f == -1){
-//            return false;
-//        }
-//
-//        if(!books[f].getCheckedOut()){
-//            return false;
-//        }
-//
-//        books[f].setCheckedOut(false);
-//        return true;
-//    }
-//
-
-//
-//    public void print() {
-//        int i;
-//        for(i=0;i<numBooks;i++){
-//            System.out.println(books[i]);
-//        }
-//    }
-//
-//    private void grow() { // helper method to grow the capacity by 4
-//
-//        Book[] temp = new Book[books.length + 4]; //Declare and initialize a temp array of length +4 than original one
-//        int i,j;
-//
-//        for(i=0;i < books.length;i++){
-//            temp[i] = books[i]; //Transfer elements to the new array
-//        }
-//
-//        books = temp; //Give the reference of the new array to the original array
-//    }
-//
-//    private int find(Book book) { // helper method to find a book in the bag. Returns the index of the book to be removed
-//        int i;
-//        for(i=0;i<numBooks;i++){
-//            if(books[i].equals(book)){
-//                return i;
-//            }
-//        }
-//
-//        return -1; //This means book not found in the lib.
-//    }
-//
-//    public boolean isBookAvailable(){
-//        return false;
-//    }
-//}
