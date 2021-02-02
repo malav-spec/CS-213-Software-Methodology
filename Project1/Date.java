@@ -8,6 +8,11 @@ public class Date {
     private int month;
     private int day;
 
+    /**
+     *
+     * @param date
+     */
+
     public Date(String date) {
         StringTokenizer st = new StringTokenizer(date,"/");
         month = Integer.parseInt(st.nextToken());
@@ -20,6 +25,11 @@ public class Date {
         month = Calendar.getInstance().get(Calendar.MONTH) + 1;//Since month in Calendar class starts at 0
         day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
     }
+
+    /**
+     *
+     * @return
+     */
 
     public int getYear(){
         return year;
@@ -39,8 +49,13 @@ public class Date {
         if(year < 1900 ){// If year < 1900 return false
             return false;
         }
+
         if(month<=0||day<=0) //Month and date cannot be zero
         {
+            return false;
+        }
+
+        if(day > 31){
             return false;
         }
 
