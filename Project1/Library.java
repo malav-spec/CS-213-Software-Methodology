@@ -182,18 +182,18 @@ public class Library {
      * @author Malav Doshi and Herik Patel
      */
     public void printByNumber() {
-
+        
         int i,j;
 
         if(numBooks == 0){// IF the list is empty just return
             return;
         }
 
-        for(i=0;i<books.length-1;i++){  //Selection sort
+        for(i=0;i<numBooks-1;i++){  //Selection sort
 
             int min = i;
 
-            for(j=i+1;j<books.length;j++){
+            for(j=i+1;j<numBooks;j++){
                 if(Integer.parseInt(books[j].getNumber()) < Integer.parseInt(books[min].getNumber())){
                     min = j;
                 }
@@ -202,7 +202,7 @@ public class Library {
             books[min] = books[i];
             books[i] = temp;
         }
-        for(i=0;i<books.length;i++) {
+        for(i=0;i<numBooks;i++) {
             System.out.println(books[i]);
         }
     }
