@@ -75,7 +75,18 @@ public class Date {
     public boolean isValid() {
         Date today = new Date();
 
-        if(year < 1900 ){// If year < 1900 return false
+        int min_year = 1900;
+        int max_day = 31;
+        int max_month = 12;
+        int feb = 2;
+        int feb_29 = 29;
+        int feb_28 = 28;
+        int apr = 4;
+        int jun = 6;
+        int sept = 9;
+        int nov = 11;
+
+        if(year < min_year ){// If year < 1900 return false
             return false;
         }
 
@@ -84,7 +95,7 @@ public class Date {
             return false;
         }
 
-        if(day > 31){
+        if(day > max_day){
             return false;
         }
 
@@ -92,7 +103,7 @@ public class Date {
             return false;
         }
 
-        if(month > 12){// Max 12 months
+        if(month > max_month){// Max 12 months
             return false;
         }
 
@@ -100,18 +111,18 @@ public class Date {
             return false;
         }
 
-        if(month == 2 && day > 29){//Feb can't have more than 29 days at max
+        if(month == feb && day > feb_29){//Feb can't have more than 29 days at max
             return false;
         }
 
         if(!isLeapYear(year)){ // If year not a leap year and input date is greater than 28 in Feb, return false
-            if(month == 2 && day > 28){
+            if(month == feb && day > feb_28){
                 return false;
             }
         }
 
-        if(month == 4 || month == 6 || month == 9 || month == 11){//These months cant have date greater than 30
-            if(day > 30){
+        if(month == apr || month == jun || month == sept || month == nov){//These months cant have date greater than 30
+            if(day > max_day-1){
                 return false;
             }
         }
@@ -124,12 +135,16 @@ public class Date {
      * @param y Year
      * @return True if given year is leap year else false
      */
-    private boolean isLeapYear(int y){
-        if(y % 4 == 0){ //Check divisibility by 4
+   private boolean isLeapYear(int y){
+        int div_4 = 4;
+        int div_100 = 100;
+        int div_400 = 400;
 
-            if(y % 100 == 0){//Check divisibility by 100
+        if(y % div_4 == 0){ //Check divisibility by 4
 
-                if(y % 400 == 0){//Check divisibility by 400
+            if(y % div_100 == 0){//Check divisibility by 100
+
+                if(y % div_400 == 0){//Check divisibility by 400
 
                     return true;
                 }
@@ -143,4 +158,6 @@ public class Date {
         }
         return false;
     }
+    
+    
 }
