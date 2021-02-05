@@ -159,5 +159,34 @@ public class Date {
         return false;
     }
     
+    public static void main(String args[]){
+        Date test = new Date("2/29/2000");
+        System.out.println("Test1: Expected output: true | Actual output: " + test.isValid());
+
+        Date test1 = new Date("13/12/1999");
+        System.out.println("Test2: Expected output: false | Actual output: " + test1.isValid());
+
+        Date test2 = new Date("2/29/1995");
+        System.out.println("Test3: Expected output: false | Actual output: " + test2.isValid());
+
+        Date test3 = new Date("10/31/1999");
+        System.out.println("Test4: Expected output: true | Actual output: " + test3.isValid());
+
+        Date test4 = new Date("11/31/1999");
+        System.out.println("Test5: Expected output: false | Actual output: " + test4.isValid());
+
+        Date test5 = new Date("3/32/1909");
+        System.out.println("Test6: Expected output: false | Actual output: " + test5.isValid());
+
+        Date test6 = new Date("1/12/1899");
+        System.out.println("Test7: Expected output: false | Actual output: " + test6.isValid());
+
+        Date test7 = new Date("1/1/2002");
+        System.out.println("Test8: Expected output: true | Actual output: " + test7.isValid());
+
+        Date test8 = new Date("2/12/2021");
+        System.out.println("Test9: Expected output: false | Actual output: " + test8.isValid());
+        
+    }
     
 }
