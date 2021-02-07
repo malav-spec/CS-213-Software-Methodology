@@ -2,8 +2,8 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 /**
- * @author Malav Doshi and Herik Patel
  * Used to create Date object
+ * @author Malav Doshi and Herik Patel
  */
 public class Date {
     /**
@@ -25,10 +25,16 @@ public class Date {
      */
 
     public Date(String date) {
-        StringTokenizer st = new StringTokenizer(date,"/");
-        month = Integer.parseInt(st.nextToken());
-        day = Integer.parseInt(st.nextToken());
-        year = Integer.parseInt(st.nextToken());
+        try {
+            StringTokenizer st = new StringTokenizer(date,"/");
+            month = Integer.parseInt(st.nextToken());
+            day = Integer.parseInt(st.nextToken());
+            year = Integer.parseInt(st.nextToken());
+        }
+        catch (Exception e){
+            return;
+        }
+
     }
 
     /**
@@ -135,7 +141,7 @@ public class Date {
      * @param y Year
      * @return True if given year is leap year else false
      */
-   private boolean isLeapYear(int y){
+    private boolean isLeapYear(int y){
         int div_4 = 4;
         int div_100 = 100;
         int div_400 = 400;
@@ -158,7 +164,11 @@ public class Date {
         }
         return false;
     }
-    
+
+    /**
+     * Testbed main for Date class
+     * @param args No input needed
+     */
     public static void main(String args[]){
         Date test = new Date("2/29/2000");
         System.out.println("Test1: Expected output: true | Actual output: " + test.isValid());
@@ -186,7 +196,7 @@ public class Date {
 
         Date test8 = new Date("2/12/2021");
         System.out.println("Test9: Expected output: false | Actual output: " + test8.isValid());
-        
+
     }
-    
+
 }
