@@ -78,6 +78,11 @@ public class Kiosk {
                 dateIn = st.nextToken();
                 date = new Date(dateIn);
 
+                if(date.getMonth() == 0 || date.getDay() == 0 || date.getYear() == 0){
+                    System.out.println("Invalid Date!");
+                    continue;
+                }
+
                 if(!date.isValid()){//If date not valid give a warning
                     System.out.println("Invalid Date!");
                     continue;
