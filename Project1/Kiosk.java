@@ -46,6 +46,29 @@ public class Kiosk {
 
             if(st.hasMoreTokens()) { //Set the command
                 command = st.nextToken();
+                if(command.equals("A"))
+                {
+                    if(st.countTokens()!=2) {
+                        System.out.println("Invalid command!");
+                        continue;
+                    }
+                }
+                if((command.equals("R")||command.equals("O"))||command.equals("I"))
+                {
+                    if(st.countTokens()!=1)
+                    {
+                        System.out.println("Invalid command!");
+                        continue;
+                    }
+                }
+                if((command.equals("PA")||command.equals("PD"))||command.equals("PN"))
+                {
+                    if(st.countTokens()!=0)
+                    {
+                        System.out.println("Invalid command!");
+                        continue;
+                    }
+                }
             }
 
             if(!validCommand(command)){
@@ -62,10 +85,14 @@ public class Kiosk {
             if(st.hasMoreTokens()) { //Set Name or number
                 String temp = st.nextToken();
 
-                if (isNumber(temp)) {
+                if (isNumber(temp) && (command.equals("O") || command.equals("R") || command.equals("I"))){
                     number = temp;
-                } else {
+                } else if(command.equals("A")) {
                     name = temp;
+                }
+                else{
+                    System.out.println("Invalid command!");
+                    continue;
                 }
             }
             else if(command.length() == 1){
@@ -142,7 +169,7 @@ public class Kiosk {
                 System.out.println("** End of list");
             }
             else if(command.equals("PN")){ //Calls the print by number function from the lib
-                System.out.println("** List of books in the library");
+                System.out.println("** List of books by the book numbers.");
                 lib.printByNumber();
                 System.out.println("** End of list");
             }
