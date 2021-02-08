@@ -147,20 +147,8 @@ public class Library {
      */
     public void print() {
         int i;
-        String print_stmt = "";
         for(i=0;i<numBooks;i++){
-            print_stmt=print_stmt+"Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear();
-            if(books[i].getCheckedOut())
-            {
-                print_stmt=print_stmt+"::is not available.";
-            }
-            else
-            {
-                print_stmt=print_stmt+"::is available.";
-            }
-
-            System.out.println(print_stmt);
-            print_stmt = "";
+            System.out.println(books[i].toString());
         }
     }
 
@@ -171,43 +159,18 @@ public class Library {
     public void printByDate()
     {
         Book[] sorted_list = sorted_Array();   // This function returns sorted array
-        String print_stmt = "";
         int i;
         for(i=0;i<numBooks;i++) {
-            print_stmt=print_stmt+"Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear();
-            if(books[i].getCheckedOut())
-            {
-                print_stmt=print_stmt+"::is not available.";
-            }
-            else
-            {
-                print_stmt=print_stmt+"::is available.";
-            }
-            System.out.println(print_stmt);
-            print_stmt="";
+            System.out.println(books[i].toString());
         }
     }
 
-    /**String print_stmt = "";
-        int i;
-        for(i=0;i<numBooks;i++) {
-            print_stmt=print_stmt+"Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear();
-            if(books[i].getCheckedOut())
-            {
-                print_stmt=print_stmt+"::is not available.";
-            }
-            else
-            {
-                print_stmt=print_stmt+"::is available.";
-            }
-            System.out.println(print_stmt);
-            print_stmt="";
-        }
+    /**
      * Used to print books in ascending order by book number
      * @author Malav Doshi and Herik Patel
      */
     public void printByNumber() {
-        
+
         int i,j;
 
         if(numBooks == 0){// IF the list is empty just return
@@ -227,20 +190,9 @@ public class Library {
             books[min] = books[i];
             books[i] = temp;
         }
-        
-        String print_stmt = "";
+
         for(i=0;i<numBooks;i++) {
-            print_stmt=print_stmt+"Book#"+books[i].getNumber()+"::"+books[i].getName()+"::"+books[i].getDatePublished().getMonth()+"/"+books[i].getDatePublished().getDay()+"/"+books[i].getDatePublished().getYear();
-            if(books[i].getCheckedOut())
-            {
-                print_stmt=print_stmt+"::is not available.";
-            }
-            else
-            {
-                print_stmt=print_stmt+"::is available.";
-            }
-            System.out.println(print_stmt);
-            print_stmt="";
+            System.out.println(books[i].toString());
         }
     }
 
