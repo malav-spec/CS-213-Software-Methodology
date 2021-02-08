@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * Creates a Book object
@@ -160,12 +160,19 @@ public class Book {
     }
 
     /**
-     *
-     * @return String value
+     * Used to return a string in a particular format
+     * @return String in the format: "Book#(number)::Name::Date published::is/is not available"
      */
     @Override
     public String toString() {
-        return null;
+        String str = "";
+        if(!checkedOut) {
+            str = str + "Book#" + number + "::" + name + "::" + datePublished.getMonth() + "/" + datePublished.getDay() + "/" + datePublished.getYear() + "::" + "is available.";
+        }
+        else{
+            str = str + "Book#" + number + "::" + name + "::" + datePublished.getMonth() + "/" + datePublished.getDay() + "/" + datePublished.getYear() + "::" + "is not available.";
+        }
+        return str;
     }
 
 }
