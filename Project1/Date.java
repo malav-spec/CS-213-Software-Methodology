@@ -5,23 +5,23 @@ import java.util.StringTokenizer;
  * Used to create Date object
  * @author Malav Doshi and Herik Patel
  */
-public class Date {
+public class Date implements Comparable<Date> {
     /**
-     * year of publishing
+     * Year when the employee was hired
      */
     private int year;
     /**
-     * month of publishing
+     * Month when the employee was hired
      */
     private int month;
     /**
-     * day of publishing
+     * Day when the employee was hired
      */
     private int day;
 
     /**
-     * Used to set values for Date object
-     * @param date It is the date entered for book
+     * Constructor Used to set values for Date object
+     * @param date It is the date on which employee was hired
      */
 
     public Date(String date) {
@@ -31,15 +31,13 @@ public class Date {
             day = Integer.parseInt(st.nextToken());
             year = Integer.parseInt(st.nextToken());
         }
-        catch (Exception e){
-            return;
+        catch (Exception ignored){
         }
 
     }
 
     /**
-     *
-     * @author Malav Doshi and Herik Patel
+     *Constructor used to instantiate values for date
      */
     public Date() {
         year = Calendar.getInstance().get(Calendar.YEAR);
@@ -49,7 +47,6 @@ public class Date {
 
     /**
      * Used to get year for a date
-     * @author Malav Doshi and Herik Patel
      * @return Integer value which is year
      */
 
@@ -58,7 +55,6 @@ public class Date {
     }
     /**
      * Used to get month for a date
-     * @author Malav Doshi and Herik Patel
      * @return Integer value which is month
      */
     public int getMonth(){
@@ -66,7 +62,6 @@ public class Date {
     }
     /**
      * Used to get day for a date
-     * @author Malav Doshi and Herik Patel
      * @return Integer value which is day
      */
     public int getDay(){
@@ -75,7 +70,6 @@ public class Date {
 
     /**
      * Checks if the date entered by user is valid or invalid
-     * @author Malav Doshi and Herik Patel
      * @return False if invalid date is entered else True
      */
     public boolean isValid() {
@@ -128,17 +122,14 @@ public class Date {
         }
 
         if(month == apr || month == jun || month == sept || month == nov){//These months cant have date greater than 30
-            if(day > max_day-1){
-                return false;
-            }
+            return day <= max_day - 1;
         }
         return true;
     }
 
     /**
      *Used to check if a year is a leap year or not
-     * @author Malav Doshi and Herik Patel
-     * @param y Year
+     * @param y Year which we want to check
      * @return True if given year is leap year else false
      */
     private boolean isLeapYear(int y){
@@ -148,16 +139,9 @@ public class Date {
 
         if(y % div_4 == 0){ //Check divisibility by 4
 
-            if(y % div_100 == 0){//Check divisibility by 100
-
-                if(y % div_400 == 0){//Check divisibility by 400
-
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
+            //Check divisibility by 100
+            //Check divisibility by 400
+            if(y % div_100 == 0) return y % div_400 == 0;
             else {
                 return true;
             }
@@ -166,10 +150,51 @@ public class Date {
     }
 
     /**
+     * This method is used to compare dates
+     * @author Malav Doshi and Herik Patel
+     * @param date Date which we want to compare it with
+     * @return 1 if the date is greater than the date we compare to, 0 if both the dates are equal, -1 if date is smaller than the other date
+     */
+    @Override
+    public int compareTo(Date date) {
+
+        if(date.getYear() > this.year){ //Check for years
+            return -1;
+        }
+        else if(date.getYear() < this.year){
+            return 1;
+        }
+
+        else if (date.year == this.year) {
+
+            if(date.month == this.month){ //Check for months
+
+                if(date.day < this.day){// Check days if years and months equal of both the objects
+                    return 1;
+                }
+                else if(date.day > this.day){
+                    return -1;
+                }
+                else {
+                    return 0; //Dates are equal
+                }
+            }
+            else if(date.month < this.month){
+                return 1;
+            }
+            else {
+                return -1;
+            }
+        }
+
+        return 1;
+    }
+
+    /**
      * Testbed main for Date class
      * @param args No input needed
      */
-    public static void main(String args[]){
+    public static void main(String[] args){
         Date test = new Date("2/29/2000");
         System.out.println("Test1: Expected output: true | Actual output: " + test.isValid());
 
@@ -200,3 +225,4 @@ public class Date {
     }
 
 }
+
